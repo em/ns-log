@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/em/ns-log.svg?branch=master)](https://travis-ci.org/em/ns-log)
+
 # Namespaced Logger
 
 Very simple logger for node and browser.
