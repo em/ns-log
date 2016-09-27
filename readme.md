@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/em/ns-log.svg?branch=master)](https://travis-ci.org/em/ns-log)
+[![Build Status](https://drone.io/github.com/em/ns-log/status.png)](https://drone.io/github.com/em/ns-log/latest)
 
 # Namespaced Logger
 
