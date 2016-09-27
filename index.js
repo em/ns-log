@@ -66,7 +66,7 @@ global.timestamp = function() {
   var min = date.getMinutes();
   var sec = date.getSeconds();
 
-  return `${year}-${month}-${day} ${hour}:${min}:${sec} (UTC)`;
+  return year+'-'+month+'-'+day+'T'+hour+':'+min+':'+sec+'Z';
 }
 
 /**
@@ -163,7 +163,7 @@ var makeLogFn = function(prefixes) {
 
     // Run any functions in args
     // for generated messages
-    args = args.map((a) => {
+    args = args.map(function(a) {
       if(typeof a === 'function') {
         return a();
       }
