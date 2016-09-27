@@ -1,0 +1,29 @@
+{
+  "name": "ns-log",
+  "version": "0.0.1",
+  "description": "Easy (yet complete) logging for node and browser",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/em/elem.git"
+  },
+  "keywords": [
+    "logger",
+    "that",
+    "does",
+    "not",
+    "suck"
+  ],
+  "author": "Emery Denuccio",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.0"
+  }
+}
