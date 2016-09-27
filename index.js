@@ -125,14 +125,8 @@ var makeLogFn = function(prefixes) {
    */
   log.enable = function(filter) {
     global.enabled = true;
-
-    if (typeof filter === 'string') {
-      filter = filter.split(/\s+/); // Pre-split it
-    }
-    else {
-      filter = [];
-    }
-
+    filter = filter || '*';
+    filter = filter.split(/\s+/); // Pre-split it
     global.filter = filter;
   }
 
@@ -176,13 +170,14 @@ var makeLogFn = function(prefixes) {
       return a;
     });
 
-    // Make string
-    var str = args.join(' ');
-
     // Determine if message matches filter.
-    if (global.filter.every(kw => str.match(kw))) {
-      // Output log message 
-      writefn(str);
+    for (var i=0, l = global.filter.length; i<l; ++i) {
+      var f = global.filter[i];
+      if (args.indexOf(f) !== -1 || f === '*') {
+        // Output log message 
+        writefn.apply(null, args);
+        break;
+      }
     }
 
     // Do nothing

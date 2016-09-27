@@ -8,8 +8,8 @@ describe('nslog', function() {
   // Hook each console method
   ['log', 'info', 'warn', 'error', 'debug']
   .forEach(function(type) {
-    nslog.global.console[type] = function(msg) {
-      last[type] = msg;
+    nslog.global.console[type] = function() {
+      last[type] = [].slice.call(arguments).join(' ');
     }
   });
 
@@ -36,9 +36,9 @@ describe('nslog', function() {
   });
 
   describe('enable', function() {
-    it('sets global.filter to [] if undefined', function() {
+    it('defaults to "*" if undefined', function() {
       nslog.enable();
-      expect(nslog.global.filter).eql([]);
+      expect(nslog.global.filter).eql(["*"]);
     });
     it('sets global.enabled', function() {
       nslog.enable();
@@ -93,17 +93,19 @@ describe('nslog', function() {
       expect(last.log).eq(undefined);
     });
 
-    it('uses AND logic', function() {
-      nslog.enable('hello notinlog');
-      nslog('hello world');
-      expect(last.log).eq(undefined);
+    it('allows matches through', function() {
+      nslog.enable('yo');
+      nslog.ns('yo')('dawg');
+      expect(last.log).eq('yo (time) dawg');
     });
 
-    it('allows matches through', function() {
-      nslog.enable('hello');
-      nslog('hello world');
-      expect(last.log).eq('(time) hello world');
+    it('uses OR logic', function() {
+      nslog.enable('yo orthis');
+      nslog.ns('yo')('dawg');
+      expect(last.log).eq('yo (time) dawg');
     });
+
+
   });
 });
 
