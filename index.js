@@ -36,6 +36,12 @@ global.enabled = false;
  */
 global.filter = [];
 
+
+/**
+ * Global prefixes on the root logger.
+ */
+global.prefixes = [];
+
 /**
  * Make a virtual `console` object with
  * all methods available. Falling back
@@ -154,7 +160,7 @@ var makeLogFn = function(prefixes) {
     args = [].slice.call(args);
 
     // Prepend all prefixes
-    args = prefixes.concat(args);
+    args = prefixes.concat(global.prefixes, args);
 
     // Prepend type
     if (type) {

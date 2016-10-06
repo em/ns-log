@@ -104,8 +104,15 @@ describe('nslog', function() {
       nslog.ns('yo')('dawg');
       expect(last.log).eq('yo dawg');
     });
+  });
 
-
+  describe('global.prefixes', function() {
+    it('affects all ns logs', function() {
+      var log = nslog.ns('yo');
+      log.global.prefixes.push('global');
+      log.info('dawg');
+      expect(last.info).eq('[info] yo global dawg');
+    });
   });
 });
 
