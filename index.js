@@ -9,14 +9,14 @@
  * Example usage:
  *
  *  // Make a log function with my:module prefix
- *  var log = require('log').ns('mymodule');
+ *  var log = require('log').ns('api/login');
  *
- *  // Only output logs containing both "my:module" and "ERROR"
- *  log.enable('my:module ERROR');
+ *  // Only output logs containing "module=main" or "ERROR"
+ *  log.enable('ERROR');
  *
  *  // log.error logs messages with [ERROR] prefix
  *  log.error('omgbbq');
- *  => '[ERROR] my:module omgbbq'
+ *  => '[ERROR] api/login omgbbq'
  */
 
 /**
@@ -194,8 +194,6 @@ var makeLogFn = function(prefixes) {
 }
 
 /**
- * Export a log function with the date prefixed
+ * Export root log function 
  */
-module.exports = makeLogFn([function() {
-  return global.timestamp()
-}]);
+module.exports = makeLogFn([]);

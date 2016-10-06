@@ -25,7 +25,7 @@ describe('nslog', function() {
     it('outputs with no type-prefix', function() {
       nslog.enable();
       nslog('hello');
-      expect(last.log).eql('(time) hello');
+      expect(last.log).eql('hello');
     });
 
     it('does nothing if not enabled', function() {
@@ -50,7 +50,7 @@ describe('nslog', function() {
     it('prefixes logs with namespace', function() {
       nslog.enable();
       nslog.ns('yo')('dawg');
-      expect(last.log).eq('yo (time) dawg');
+      expect(last.log).eq('yo dawg');
     });
   });
 
@@ -58,7 +58,7 @@ describe('nslog', function() {
     it('calls console.debug prefixed with [debug]', function() {
       nslog.enable();
       nslog.debug('yo');
-      expect(last.debug).eq('[debug] (time) yo');
+      expect(last.debug).eq('[debug] yo');
     });
   });
 
@@ -66,7 +66,7 @@ describe('nslog', function() {
     it('calls console.info prefixed with [info]', function() {
       nslog.enable();
       nslog.info('yo');
-      expect(last.info).eq('[info] (time) yo');
+      expect(last.info).eq('[info] yo');
     });
   });
 
@@ -74,7 +74,7 @@ describe('nslog', function() {
     it('calls console.warn prefixed with [warn]', function() {
       nslog.enable();
       nslog.warn('yo');
-      expect(last.warn).eq('[warn] (time) yo');
+      expect(last.warn).eq('[warn] yo');
     });
   });
 
@@ -82,7 +82,7 @@ describe('nslog', function() {
     it('calls console.error prefixed with [error]', function() {
       nslog.enable();
       nslog.error('yo');
-      expect(last.error).eq('[error] (time) yo');
+      expect(last.error).eq('[error] yo');
     });
   });
 
@@ -96,13 +96,13 @@ describe('nslog', function() {
     it('allows matches through', function() {
       nslog.enable('yo');
       nslog.ns('yo')('dawg');
-      expect(last.log).eq('yo (time) dawg');
+      expect(last.log).eq('yo dawg');
     });
 
     it('uses OR logic', function() {
       nslog.enable('yo orthis');
       nslog.ns('yo')('dawg');
-      expect(last.log).eq('yo (time) dawg');
+      expect(last.log).eq('yo dawg');
     });
 
 

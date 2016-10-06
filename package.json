@@ -1,6 +1,6 @@
 {
   "name": "ns-log",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Easy (yet complete) logging for node and browser",
   "main": "index.js",
   "directories": {
