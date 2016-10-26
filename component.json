@@ -1,7 +1,7 @@
 {
   "name": "ns-log",
   "description": "Easy (yet complete) logging for node and browser",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "keywords": [],
   "dependencies": {},
   "development": {},
